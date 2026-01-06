@@ -7,10 +7,11 @@ import { Stack, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
+import Toast from "react-native-toast-message";
 
 import { onLogout } from "@/events/authEvents";
 import { useColorScheme } from "@/hooks/use-color-scheme";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: "transparent" }} edges={["top", "left", "right"]}>
+      <SafeAreaProvider style={{ flex: 1, backgroundColor: "transparent" }}>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen
@@ -34,7 +35,8 @@ export default function RootLayout() {
           <Stack.Screen name="home/index" options={{ headerShown: false }} />
         </Stack>
         <StatusBar translucent backgroundColor="transparent" />
-      </SafeAreaView>
+        <Toast />
+      </SafeAreaProvider>
     </ThemeProvider>
   );
 }
