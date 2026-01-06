@@ -1,12 +1,20 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ViewStyle } from "react-native";
 import SvgGradientBg from "../homescreen/GradientBg";
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = ({
+  children,
+  className,
+  style,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  style?: ViewStyle;
+}) => {
   return (
-    <View style={{ flex: 1, backgroundColor: "transparent" }}>
+    <View style={{ flex: 1, backgroundColor: "transparent", ...style }}>
       <SvgGradientBg />
-      {children}
+      <View className={className}>{children}</View>
     </View>
   );
 };

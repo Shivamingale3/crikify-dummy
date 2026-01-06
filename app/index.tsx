@@ -1,32 +1,11 @@
 import React from "react";
-import { ScrollView, View } from "react-native";
 import "../global.css";
 
-import GreetingCard from "@/components/homescreen/GreetingCard";
-import RootLayout from "@/components/ui/RootLayout";
-import Header from "../components/homescreen/Header";
+import { Redirect } from "expo-router";
 
-const HomeScreen = () => {
-  return (
-    <RootLayout>
-      <ScrollView className="w-full h-full">
-        <Header />
-        <View className="px-2 mt-5">
-          <GreetingCard />
-        </View>
-      </ScrollView>
-    </RootLayout>
-  );
+const EntryScreen = () => {
+  const token = null;
+  return <Redirect href={token ? "/home" : "/(auth)/login"} />;
 };
 
-export default HomeScreen;
-
-// For combining multiple glass elements
-// function MergingGlassElements() {
-//   return (
-//     <LiquidGlassContainerView spacing={20}>
-//       <LiquidGlassView style={{ width: 100, height: 100, borderRadius: 50 }} />
-//       <LiquidGlassView style={{ width: 100, height: 100, borderRadius: 50 }} />
-//     </LiquidGlassContainerView>
-//   );
-// }
+export default EntryScreen;
