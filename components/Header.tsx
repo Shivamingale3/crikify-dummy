@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 
 const Header = () => {
   return (
-    <View className="w-full flex-row items-center justify-between px-4 py-2 bg-background pt-12">
+    <View className="w-full flex-row items-center justify-between px-4 py-2  pt-12">
       {/* Menu Icon */}
       <TouchableOpacity className="w-[33.3%]">
         <Ionicons name="menu" size={28} color="white" />
