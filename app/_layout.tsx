@@ -12,7 +12,8 @@ import Toast from "react-native-toast-message";
 import { onLogout } from "@/events/authEvents";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Provider } from "jotai";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Platform } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   const router = useRouter();
@@ -24,9 +25,10 @@ export default function RootLayout() {
     return unsub;
   }, [router]);
 
+  const SafeWrapper = Platform.OS === "ios" ? SafeAreaView : SafeAreaProvider;
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <SafeAreaProvider style={{ flex: 1, backgroundColor: "transparent" }}>
+      <SafeWrapper style={{ flex: 1, backgroundColor: "transparent" }}>
         <Provider>
           <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -39,7 +41,9 @@ export default function RootLayout() {
           <StatusBar translucent backgroundColor="transparent" />
         </Provider>
         <Toast />
-      </SafeAreaProvider>
+      </SafeWrapper>
     </ThemeProvider>
   );
+
+  
 }

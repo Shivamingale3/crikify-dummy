@@ -12,6 +12,7 @@ const StatsGrid = () => {
     <View className="flex flex-row justify-between">
       <FlatList
         data={sampleData}
+        scrollEnabled={false}
         numColumns={3}
         columnWrapperStyle={{
           justifyContent: "space-between",

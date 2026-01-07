@@ -6,15 +6,17 @@ import Header from "@/components/homescreen/Header";
 import RootLayout from "@/components/ui/RootLayout";
 import StatsCard from "@/components/homescreen/StatsCard";
 import StatsGrid from "@/components/homescreen/StatsGrid";
+import ServiceCard from "@/components/homescreen/ServiceCard";
 
 const HomeScreen = () => {
   return (
     <RootLayout>
-      <ScrollView className="w-full h-full">
-        <Header />
-        <View className="px-2 mt-5">
+      <Header />
+      <ScrollView>
+        <View className="px-2 mt-5 gap-3">
           <GreetingCard />
           <StatsGrid />
+          <ServiceCard />
         </View>
       </ScrollView>
     </RootLayout>

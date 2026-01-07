@@ -4,7 +4,7 @@ import "../global.css";
 import { Redirect } from "expo-router";
 
 const EntryScreen = () => {
-  const token = null;
+  const token = "shivam";
   return <Redirect href={token ? "/home" : "/(auth)/login"} />;
 };
 
