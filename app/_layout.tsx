@@ -11,6 +11,7 @@ import Toast from "react-native-toast-message";
 
 import { onLogout } from "@/events/authEvents";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { Provider } from "jotai";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function RootLayout() {
@@ -26,15 +27,17 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <SafeAreaProvider style={{ flex: 1, backgroundColor: "transparent" }}>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="(auth)/login/index"
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="home/index" options={{ headerShown: false }} />
-        </Stack>
-        <StatusBar translucent backgroundColor="transparent" />
+        <Provider>
+          <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="(auth)/login/index"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="home/index" options={{ headerShown: false }} />
+          </Stack>
+          <StatusBar translucent backgroundColor="transparent" />
+        </Provider>
         <Toast />
       </SafeAreaProvider>
     </ThemeProvider>
